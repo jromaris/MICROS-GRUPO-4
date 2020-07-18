@@ -1,0 +1,230 @@
+
+Discarded input sections
+
+ .text          0x00000000        0x0 ./source/App.o
+ .data          0x00000000        0x0 ./source/App.o
+ .bss           0x00000000        0x0 ./source/App.o
+ .text.App_Init
+                0x00000000        0x8 ./source/App.o
+ .text.App_Run  0x00000000        0x6 ./source/App.o
+ .debug_info    0x00000000      0x11d ./source/App.o
+ .debug_abbrev  0x00000000       0xb4 ./source/App.o
+ .debug_aranges
+                0x00000000       0x28 ./source/App.o
+ .debug_ranges  0x00000000       0x18 ./source/App.o
+ .debug_line    0x00000000       0xb8 ./source/App.o
+ .debug_str     0x00000000      0x1dc ./source/App.o
+ .comment       0x00000000       0x7f ./source/App.o
+ .debug_frame   0x00000000       0x30 ./source/App.o
+ .ARM.attributes
+                0x00000000       0x39 ./source/App.o
+ .text          0x00000000        0x0 ./SDK/CMSIS/system_MK64F12.o
+ .data          0x00000000        0x0 ./SDK/CMSIS/system_MK64F12.o
+ .bss           0x00000000        0x0 ./SDK/CMSIS/system_MK64F12.o
+ .text.SystemCoreClockUpdate
+                0x00000000      0x16c ./SDK/CMSIS/system_MK64F12.o
+ .text.SystemInitHook
+                0x00000000        0x2 ./SDK/CMSIS/system_MK64F12.o
+ .text.SystemInit
+                0x00000000       0x34 ./SDK/CMSIS/system_MK64F12.o
+ .data.SystemCoreClock
+                0x00000000        0x4 ./SDK/CMSIS/system_MK64F12.o
+ .debug_info    0x00000000      0x604 ./SDK/CMSIS/system_MK64F12.o
+ .debug_abbrev  0x00000000      0x147 ./SDK/CMSIS/system_MK64F12.o
+ .debug_loc     0x00000000       0xc4 ./SDK/CMSIS/system_MK64F12.o
+ .debug_aranges
+                0x00000000       0x30 ./SDK/CMSIS/system_MK64F12.o
+ .debug_ranges  0x00000000       0x20 ./SDK/CMSIS/system_MK64F12.o
+ .debug_line    0x00000000      0x158 ./SDK/CMSIS/system_MK64F12.o
+ .debug_str     0x00000000      0x3bd ./SDK/CMSIS/system_MK64F12.o
+ .comment       0x00000000       0x7f ./SDK/CMSIS/system_MK64F12.o
+ .debug_frame   0x00000000       0x48 ./SDK/CMSIS/system_MK64F12.o
+ .ARM.attributes
+                0x00000000       0x39 ./SDK/CMSIS/system_MK64F12.o
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+PROGRAM_FLASH    0x00000000         0x00100000         xr
+SRAM_UPPER       0x20000000         0x00030000         xrw
+SRAM_LOWER       0x1fff0000         0x00010000         xrw
+FLEX_RAM         0x14000000         0x00001000         xrw
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD ./source/App.o
+LOAD ./SDK/CMSIS/system_MK64F12.o
+                0x00000000                __base_PROGRAM_FLASH = 0x0
+                0x00000000                __base_Flash = 0x0
+                0x00100000                __top_PROGRAM_FLASH = 0x100000
+                0x00100000                __top_Flash = 0x100000
+                0x20000000                __base_SRAM_UPPER = 0x20000000
+                0x20000000                __base_RAM = 0x20000000
+                0x20030000                __top_SRAM_UPPER = 0x20030000
+                0x20030000                __top_RAM = 0x20030000
+                0x1fff0000                __base_SRAM_LOWER = 0x1fff0000
+                0x1fff0000                __base_RAM2 = 0x1fff0000
+                0x20000000                __top_SRAM_LOWER = 0x20000000
+                0x20000000                __top_RAM2 = 0x20000000
+                0x14000000                __base_FLEX_RAM = 0x14000000
+                0x14000000                __base_RAM3 = 0x14000000
+                0x14001000                __top_FLEX_RAM = 0x14001000
+                0x14001000                __top_RAM3 = 0x14001000
+
+.text           0x00000000      0x400
+ FILL mask 0xff
+                0x00000000                __vectors_start__ = ABSOLUTE (.)
+ *(SORT_BY_ALIGNMENT(.isr_vector))
+                0x00000000                . = ALIGN (0x4)
+                0x00000000                __section_table_start = .
+                0x00000000                __data_section_table = .
+                0x00000000        0x4 LONG 0x400 LOADADDR (.data)
+                0x00000004        0x4 LONG 0x20000000 ADDR (.data)
+                0x00000008        0x4 LONG 0x0 SIZEOF (.data)
+                0x0000000c        0x4 LONG 0x400 LOADADDR (.data_RAM2)
+                0x00000010        0x4 LONG 0x1fff0000 ADDR (.data_RAM2)
+                0x00000014        0x4 LONG 0x0 SIZEOF (.data_RAM2)
+                0x00000018        0x4 LONG 0x400 LOADADDR (.data_RAM3)
+                0x0000001c        0x4 LONG 0x14000000 ADDR (.data_RAM3)
+                0x00000020        0x4 LONG 0x0 SIZEOF (.data_RAM3)
+                0x00000024                __data_section_table_end = .
+                0x00000024                __bss_section_table = .
+                0x00000024        0x4 LONG 0x20000000 ADDR (.bss)
+                0x00000028        0x4 LONG 0x0 SIZEOF (.bss)
+                0x0000002c        0x4 LONG 0x1fff0000 ADDR (.bss_RAM2)
+                0x00000030        0x4 LONG 0x0 SIZEOF (.bss_RAM2)
+                0x00000034        0x4 LONG 0x14000000 ADDR (.bss_RAM3)
+                0x00000038        0x4 LONG 0x0 SIZEOF (.bss_RAM3)
+                0x0000003c                __bss_section_table_end = .
+                0x0000003c                __section_table_end = .
+ *(SORT_BY_ALIGNMENT(.after_vectors*))
+                0x00000400                . = 0x400
+ *fill*         0x0000003c      0x3c4 ff
+                0x00000400                PROVIDE (__FLASH_CONFIG_START__, .)
+ *(SORT_BY_ALIGNMENT(.FlashConfig))
+                0x00000400                PROVIDE (__FLASH_CONFIG_END__, .)
+                0x00000000                ASSERT (! ((__FLASH_CONFIG_START__ == __FLASH_CONFIG_END__)), Linker Flash Config Support Enabled, but no .FlashConfig section provided within application)
+ *(SORT_BY_ALIGNMENT(.text*))
+ *(SORT_BY_ALIGNMENT(.rodata) SORT_BY_ALIGNMENT(.rodata.*) SORT_BY_ALIGNMENT(.constdata) SORT_BY_ALIGNMENT(.constdata.*))
+                0x00000400                . = ALIGN (0x8)
+
+.glue_7         0x00000400        0x0
+ .glue_7        0x00000400        0x0 linker stubs
+
+.glue_7t        0x00000400        0x0
+ .glue_7t       0x00000400        0x0 linker stubs
+
+.vfp11_veneer   0x00000400        0x0
+ .vfp11_veneer  0x00000400        0x0 linker stubs
+
+.v4_bx          0x00000400        0x0
+ .v4_bx         0x00000400        0x0 linker stubs
+
+.ARM.extab
+ *(SORT_BY_ALIGNMENT(.ARM.extab*) SORT_BY_ALIGNMENT(.gnu.linkonce.armextab.*))
+                0x00000400                __exidx_start = .
+
+.ARM.exidx
+ *(SORT_BY_ALIGNMENT(.ARM.exidx*) SORT_BY_ALIGNMENT(.gnu.linkonce.armexidx.*))
+                0x00000400                __exidx_end = .
+                0x00000400                _etext = .
+
+.m_usb_data
+ *(SORT_BY_ALIGNMENT(m_usb_bdt))
+
+.data_RAM2      0x1fff0000        0x0 load address 0x00000400
+ FILL mask 0xff
+                [!provide]                PROVIDE (__start_data_RAM2, .)
+ *(SORT_BY_ALIGNMENT(.ramfunc.$RAM2))
+ *(SORT_BY_ALIGNMENT(.ramfunc.$SRAM_LOWER))
+ *(SORT_BY_ALIGNMENT(.data.$RAM2*))
+ *(SORT_BY_ALIGNMENT(.data.$SRAM_LOWER*))
+                0x1fff0000                . = ALIGN (0x8)
+                [!provide]                PROVIDE (__end_data_RAM2, .)
+
+.data_RAM3      0x14000000        0x0 load address 0x00000400
+ FILL mask 0xff
+                [!provide]                PROVIDE (__start_data_RAM3, .)
+ *(SORT_BY_ALIGNMENT(.ramfunc.$RAM3))
+ *(SORT_BY_ALIGNMENT(.ramfunc.$FLEX_RAM))
+ *(SORT_BY_ALIGNMENT(.data.$RAM3*))
+ *(SORT_BY_ALIGNMENT(.data.$FLEX_RAM*))
+                0x14000000                . = ALIGN (0x8)
+                [!provide]                PROVIDE (__end_data_RAM3, .)
+
+.uninit_RESERVED
+                0x20000000        0x0
+ *(SORT_BY_ALIGNMENT(.bss.$RESERVED*))
+                0x20000000                . = ALIGN (0x4)
+                0x20000000                _end_uninit_RESERVED = .
+
+.data           0x20000000        0x0 load address 0x00000400
+ FILL mask 0xff
+                0x20000000                _data = .
+ *(SORT_BY_ALIGNMENT(vtable))
+ *(SORT_BY_ALIGNMENT(.ramfunc*))
+ *(SORT_BY_ALIGNMENT(.data*))
+                0x20000000                . = ALIGN (0x8)
+                0x20000000                _edata = .
+
+.bss_RAM2       0x1fff0000        0x0
+                [!provide]                PROVIDE (__start_bss_RAM2, .)
+ *(SORT_BY_ALIGNMENT(.bss.$RAM2*))
+ *(SORT_BY_ALIGNMENT(.bss.$SRAM_LOWER*))
+                0x1fff0000                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                PROVIDE (__end_bss_RAM2, .)
+
+.bss_RAM3       0x14000000        0x0
+                [!provide]                PROVIDE (__start_bss_RAM3, .)
+ *(SORT_BY_ALIGNMENT(.bss.$RAM3*))
+ *(SORT_BY_ALIGNMENT(.bss.$FLEX_RAM*))
+                0x14000000                . = ALIGN ((. != 0x0)?0x8:0x1)
+                [!provide]                PROVIDE (__end_bss_RAM3, .)
+
+.bss            0x20000000        0x0
+                0x20000000                _bss = .
+ *(SORT_BY_ALIGNMENT(.bss*))
+ *(SORT_BY_ALIGNMENT(COMMON))
+                0x20000000                . = ALIGN (0x8)
+                0x20000000                _ebss = .
+                [!provide]                PROVIDE (end, .)
+
+.noinit_RAM2    0x1fff0000        0x0
+ *(SORT_BY_ALIGNMENT(.noinit.$RAM2*))
+ *(SORT_BY_ALIGNMENT(.noinit.$SRAM_LOWER*))
+                0x1fff0000                . = ALIGN (0x8)
+
+.noinit_RAM3    0x14000000        0x0
+ *(SORT_BY_ALIGNMENT(.noinit.$RAM3*))
+ *(SORT_BY_ALIGNMENT(.noinit.$FLEX_RAM*))
+                0x14000000                . = ALIGN (0x8)
+
+.noinit         0x20000000        0x0
+                0x20000000                _noinit = .
+ *(SORT_BY_ALIGNMENT(.noinit*))
+                0x20000000                . = ALIGN (0x8)
+                0x20000000                _end_noinit = .
+                0x00001000                _HeapSize = 0x1000
+
+.heap           0x20000000     0x1000
+                0x20000000                _pvHeapStart = .
+                0x20001000                . = (. + _HeapSize)
+ *fill*         0x20000000     0x1000 
+                0x20001000                . = ALIGN (0x8)
+                0x20001000                _pvHeapLimit = .
+                0x00001000                _StackSize = 0x1000
+
+.heap2stackfill
+                0x20001000     0x1000
+                0x20002000                . = (. + _StackSize)
+ *fill*         0x20001000     0x1000 
+
+.stack          0x2002f000        0x0
+                0x2002f000                _vStackBase = .
+                0x2002f000                . = ALIGN (0x8)
+                0x20030000                _vStackTop = (. + _StackSize)
+                0x00000000                _image_start = LOADADDR (.text)
+                0x00000400                _image_end = (LOADADDR (.data) + SIZEOF (.data))
+                0x00000400                _image_size = (_image_end - _image_start)
+OUTPUT(Blink.axf elf32-littlearm)
