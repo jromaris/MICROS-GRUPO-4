@@ -1,1 +1,1 @@
-# Laboratorio de Micro Procesadores: Trabajos Prácticos realizados
+# Laboratorio de Micro-Procesadores: Trabajos Prácticos realizados
